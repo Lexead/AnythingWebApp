@@ -3,13 +3,12 @@ from typing import Callable
 from fastapi import FastAPI
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from src.core.settings import AppSettings
+from app.core.settings import AppSettings
 
 
 def on_startup(app: FastAPI, settings: AppSettings) -> Callable:
     async def on_connect() -> None:
-        async_engine = create_async_engine(**settings.postgres_kwargs)
-        app.state.engine = async_engine
+        app.state.engine = create_async_engine(**settings.postgres_kwargs, future=True)
 
     return on_connect
 

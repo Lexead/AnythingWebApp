@@ -1,4 +1,4 @@
-from src.core.settings import (
+from app.core.settings import (
     AppSettings,
     DevAppSettings,
     ProdAppSettings,

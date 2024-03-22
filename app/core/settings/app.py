@@ -1,7 +1,15 @@
 from typing import Any
 
 from pydantic import PostgresDsn, RedisDsn, SecretStr
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from app.core.constants.paths import ENV_PATH
+
+
+class AppTypeSettings(BaseSettings):
+    type: str
+
+    model_config = SettingsConfigDict(env_file=ENV_PATH.joinpath("type.env"), env_file_encoding="utf-8")
 
 
 class AppSettings(BaseSettings):

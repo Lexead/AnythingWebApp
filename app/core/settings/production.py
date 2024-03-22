@@ -1,7 +1,7 @@
 from pydantic_settings import SettingsConfigDict
 
-from src.core.constants.paths import ENV_PATH
-from src.core.settings.app import AppSettings
+from app.core.constants.paths import ENV_PATH
+from app.core.settings.app import AppSettings
 
 
 class ProdAppSettings(AppSettings):
